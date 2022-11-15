@@ -15,7 +15,10 @@ export class MyNews extends Component {
   }
 
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=3d0ee53683ba4c3b9b6bc8b42d1bf0a6&page=1&pageSize=10`;
+    // let url = `https://newsapi.org/v2/top-headlines?country=in&category=${this.props.category}&apiKey=3d0ee53683ba4c3b9b6bc8b42d1bf0a6&page=1&pageSize=10`;
+    let url = `https://gnews.io/api/v4/top-headlines?token=794b3f88c8dd2fb29fb0e3ad7c7d5348&lang=en&apiKey=794b3f88c8dd2fb29fb0e3ad7c7d5348
+
+    `
     this.setState({ loading: true });
     let data = await fetch(url);
     let parseData = await data.json();
@@ -102,8 +105,8 @@ export class MyNews extends Component {
                           ? element.description.slice(0, 80)
                           : ""
                       }
-                      image={element.urlToImage}
-                      newsUrl={element.url}
+                      image={element.image}
+                      newsUrl={element.sourceurl}
                       author={element.author}
                       date={element.publishedAt}
                       source={element.source.name}
